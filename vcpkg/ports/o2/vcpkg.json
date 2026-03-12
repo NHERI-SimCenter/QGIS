@@ -5,7 +5,6 @@
   "homepage": "https://github.com/qgis/o2",
   "license": "BSD-2-Clause",
   "dependencies": [
-    "qtkeychain-qt6",
     {
       "name": "vcpkg-cmake",
       "host": true

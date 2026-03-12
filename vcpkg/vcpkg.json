@@ -57,144 +57,16 @@
     "o2",
     "proj",
     "protobuf",
-    {
-      "name": "qtbase",
-      "default-features": false,
-      "features": [
-        "opengl",
-        {
-          "name": "gles3",
-          "platform": "emscripten"
-        },
-        "concurrent",
-        "freetype",
-        "gui",
-        "jpeg",
-        "network",
-        "widgets",
-        "sql-sqlite",
-        "testlib"
-      ]
-    },
-    {
-      "name": "qtbase",
-      "default-features": false,
-      "host": true
-    },
-    "qtsvg",
-    "qtmultimedia",
-    "qt5compat",
-    "qtkeychain-qt6",
-    "zlib",
+     "zlib",
     "zstd"
   ],
   "default-features": [
     "recommended-features"
   ],
   "features": {
-    "3d": {
-      "description": "Determines whether QGIS 3D library should be built",
-      "dependencies": [
-        "qt3d"
-      ]
-    },
-    "auth": {
+     "auth": {
       "description": "Build with Auth (QCA) support",
       "dependencies": [
-        {
-          "name": "qca",
-          "default-features": false,
-          "features": [
-            "ossl"
-          ]
-        }
-      ]
-    },
-    "bindings": {
-      "description": "Determines whether Python bindings should be built",
-      "dependencies": [
-        {
-          "name": "arrow",
-          "features": [
-            "python"
-          ],
-          "platform": "!windows"
-        },
-        {
-          "name": "arrow",
-          "platform": "windows"
-        },
-        {
-          "name": "gdal",
-          "features": [
-            "python"
-          ]
-        },
-        {
-          "name": "py-adbc-postgresql",
-          "platform": "!windows"
-        },
-        {
-          "name": "py-adbc-sqlite",
-          "platform": "!windows"
-        },
-        "py-attrs",
-        "py-autopep8",
-        "py-beautifulsoup4",
-        "py-dateutil",
-        "py-duckdb",
-        {
-          "name": "py-geopandas",
-          "features": [
-            "fiona",
-            "arrow"
-          ],
-          "platform": "!windows"
-        },
-        "py-isort",
-        "py-jinja2",
-        {
-          "name": "py-jsonschema",
-          "platform": "!windows"
-        },
-        "py-lxml",
-        "py-markupsafe",
-        "py-networkx",
-        "py-numpy",
-        "py-owslib",
-        "py-pip",
-        "py-psycopg",
-        "py-psycopg2",
-        {
-          "name": "py-pydantic",
-          "platform": "!windows"
-        },
-        "py-pyproj",
-        {
-          "name": "py-pyqt6",
-          "features": [
-            "qt3d",
-            "qt5compat",
-            "qtcharts",
-            "qtdeclarative",
-            "qtpositioning",
-            "qtserialport"
-          ]
-        },
-        "py-pysal",
-        "py-pytz",
-        "py-pyyaml",
-        "py-qscintilla",
-        "py-rasterio",
-        "py-requests",
-        {
-          "name": "py-scipy",
-          "platform": "!windows"
-        },
-        "py-shapely",
-        "py-six",
-        "py-urllib3",
-        "python3"
       ]
     },
     "recommended-features": {
@@ -214,24 +86,7 @@
             "tools"
           ]
         },
-        {
-          "name": "qtbase",
-          "features": [
-            "sql-odbc"
-          ]
-        },
-        "opencl",
-        "qtdeclarative",
-        {
-          "name": "qtcharts",
-          "features": [
-            "qml"
-          ]
-        },
-        "qtimageformats",
-        "qtquickcontrols2",
-        "qttools",
-        "qtpositioning"
+        "opencl"
       ]
     },
     "exiv2": {
@@ -248,9 +103,6 @@
     "gui": {
       "description": "Determines whether QGIS gui should be built",
       "dependencies": [
-        "qscintilla",
-        "qtmultimedia",
-        "qwt"
       ]
     },
     "opencl": {
@@ -275,12 +127,6 @@
       "description": "Build with proj data",
       "dependencies": [
         "proj-data"
-      ]
-    },
-    "qtpositioning": {
-      "description": "Build with QtPositioning support",
-      "dependencies": [
-        "qtpositioning"
       ]
     },
     "server": {
