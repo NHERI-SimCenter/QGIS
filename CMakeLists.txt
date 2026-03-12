@@ -226,7 +226,6 @@ if(WITH_CORE)
   endif()
 
   set (WITH_AUTH TRUE CACHE BOOL "Determines whether QGIS authentication methods should be built")
-
   set (WITH_ANALYSIS TRUE CACHE BOOL "Determines whether QGIS analysis library should be built")
 
   if(WITH_DESKTOP)
@@ -657,6 +656,26 @@ if(WITH_CORE)
     set (HAVE_QUICK TRUE)
   endif()
 
+  # Password helper
+  find_package(Qt6Keychain CONFIG REQUIRED)
+
+  message(STATUS "WITH_AUTH = ${WITH_AUTH}")
+  
+  # Master password hash and authentication encryption
+  if(WITH_AUTH)
+    set(HAVE_AUTH TRUE)
+    find_package(QCA REQUIRED)
+  endif()
+  # Check for runtime dependency of qca-ossl plugin
+  # REQUIRED if unit tests are to be run from build directory
+  #if(NOT MSVC)
+  #  include(QCAMacros)
+  #  FIND_QCAOSSL_PLUGIN_CPP(ENABLE_TESTS)
+  #endif()
+
+  message(STATUS "WITH_AUTH = ${WITH_AUTH} HAVE_AUTH=${HAVE_AUTH}")
+
+
   # search for QScintilla2 (C++ lib) and Qwt
   if (WITH_GUI)
     find_package(QScintilla REQUIRED)
@@ -680,20 +699,6 @@ if(WITH_CORE)
     endif()
   endif()
 
-  # Password helper
-  find_package(Qt6Keychain CONFIG REQUIRED)
-
-  # Master password hash and authentication encryption
-  if(WITH_AUTH)
-    set(HAVE_AUTH TRUE)
-    find_package(QCA REQUIRED)
-  endif()
-  # Check for runtime dependency of qca-ossl plugin
-  # REQUIRED if unit tests are to be run from build directory
-  if(NOT MSVC)
-    include(QCAMacros)
-    FIND_QCAOSSL_PLUGIN_CPP(ENABLE_TESTS)
-  endif()
 
   if (APPLE)
     # Libtasn1 is for DER-encoded PKI ASN.1 parsing/extracting workarounds

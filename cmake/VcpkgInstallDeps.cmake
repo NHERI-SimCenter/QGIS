@@ -12,7 +12,6 @@ if(MSVC)
 elseif(CMAKE_SYSTEM_NAME STREQUAL "Darwin")
   file(GLOB ALL_LIBS
     "${VCPKG_BASE_DIR}/lib/*.dylib"
-    "${VCPKG_BASE_DIR}/lib/*.so"
   )
   install(FILES ${ALL_LIBS} DESTINATION "${QGIS_LIB_SUBDIR}")
 endif()
@@ -34,8 +33,7 @@ endif()
 if(MSVC)
   install(DIRECTORY "${VCPKG_BASE_DIR}/Qt6/" DESTINATION "${QGIS_BIN_SUBDIR}/Qt6") # qt plugins (qml and others)
 else()
-  install(DIRECTORY "${VCPKG_BASE_DIR}/Qt6/plugins/" DESTINATION "${APP_PLUGINS_DIR}/") # qt plugins
-  install(DIRECTORY "${VCPKG_BASE_DIR}/Qt6/qml/" DESTINATION "${APP_PLUGINS_DIR}/../Qt6/qml/") # qml plugins
+  install(DIRECTORY "${VCPKG_BASE_DIR}/Qt6/plugins/" DESTINATION "${APP_PLUGINS_DIR}/") # qt plugins (qml and others)
 endif()
 
 if(WITH_BINDINGS)
@@ -61,6 +59,13 @@ endif()
 
 function(fixup_shebang INPUT_FILE OUTPUT_VARIABLE)
   get_filename_component(_FILE ${INPUT_FILE} NAME)
+  
+  if(NOT EXISTS "${INPUT_FILE}")
+    message(STATUS "Skipping shebang fixup (file not found): ${INPUT_FILE}")
+    set(${OUTPUT_VARIABLE} "" PARENT_SCOPE)
+    return()
+  endif()
+  
   file(READ ${INPUT_FILE} CONTENTS)
   string(REGEX MATCH "^#!" SHEBANG_PRESENT "${CONTENTS}")
   if (NOT SHEBANG_PRESENT)
