@@ -17,6 +17,7 @@
 
 #include "qgis.h"
 #include "qgslayertreeview.h"
+#include "qgis_core.h"
 
 #include <QObject>
 
@@ -38,7 +39,7 @@ struct LegendLayerAction
 
 class QgsMapCanvas;
 
-class QgsAppLayerTreeViewMenuProvider : public QObject, public QgsLayerTreeViewMenuProvider
+class CORE_EXPORT QgsAppLayerTreeViewMenuProvider : public QObject, public QgsLayerTreeViewMenuProvider
 {
     Q_OBJECT
   public:

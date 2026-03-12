@@ -20,13 +20,15 @@
 #include <QList>
 #include <QPointer>
 
+#include "qgis_core.h"
+
 class QgsMapTool;
 class QgsMapToolCapture;
 
 class QgsMapCanvas;
 class QgsAdvancedDigitizingDockWidget;
 
-class QgsAppMapTools
+class CORE_EXPORT QgsAppMapTools
 {
   public:
     enum Tool
