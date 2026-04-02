@@ -9,12 +9,16 @@ Changes to Default: vcpgk.json modified to remove Qt dependencies
 #### Install Requiremnents
 1. Requires Qt6.10 (presently testing on Mac and Windows 11 using Qt6.10.2)
 2. Recquires vcpgk install:
+   
      git clone https://github.com/Microsoft/vcpkg.git
-   then on Windows OS type:  .\vcpkg\bootstrap-vcpkg.bat
-   then on Other OS type:    ./bootstrap-vcpkg.sh
-   on all finally ensure path to vcpkg on PATH.
+
+   - then on Windows OS type:  .\vcpkg\bootstrap-vcpkg.bat
+   - then on Other OS type:    ./bootstrap-vcpkg.sh
+
+   on all OS finally ensure path to vcpkg added to PATH env.
    
 4. Requires python > 3.11 (using python3.12 with following packages installed)
+   
    packages: python -m pip install packaging, setuptools, sip, tomli
 
 ### Build QGIS
