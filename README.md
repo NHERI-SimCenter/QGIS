@@ -24,7 +24,7 @@ Changes to Default: vcpgk.json modified to remove Qt dependencies
 4. run make script suitiable for OS with the python version and packages available if you have created a python_env
 5. if sucseefull the build/output folder contains qgis
 
-## The following is the Original QGIS READMS.md
+## The following is the Original QGIS README.md
    
 
 
