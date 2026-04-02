@@ -1,3 +1,32 @@
+## NHERI_SimCenter QGIS 
+
+### Modifications to QGIS for building R2DTool and OpenSRA .. builds QGIS utilizing user Qt install and not vcpkg
+
+Changes to Default: vcpgk.json modified to remove Qt dependencies
+                    makeMacDeps, makeWinDeps scripts to build other Qt related packages needed, and some others!
+                    makeMac, MakeWin scripts to build QGIS
+
+#### Building
+1. Requires Qt6.10 (presently testing on Mac and Windows 11 using Qt6.10.2)
+2. Recquires vcpgk install:
+     git clone https://github.com/Microsoft/vcpkg.git
+   then on Windows OS type:  .\vcpkg\bootstrap-vcpkg.bat
+   then on Other OS type:    ./bootstrap-vcpkg.sh
+   on all finally ensure path to vcpkg on PATH.
+   
+4. Requires python > 3.11 (using python3.12 with following packages installed)
+   packages: python -m pip install packaging, setuptools, sip, tomli
+
+To Build: 
+1. run the makeDeps script suitable for OS
+2. presently this fails, github has seeming changed sha of a compressed folder downloaded and the json for this needs to be updated!!
+3. runb makeDeps again!
+4. run make script suitiable for OS with the python version and packages available if you have created a python_env
+   
+
+
+
+
 <img src="images/README-md/main_logo.png" width="300">
 
 [![🧪 QGIS tests](https://github.com/qgis/QGIS/actions/workflows/run-tests.yml/badge.svg)](https://github.com/qgis/QGIS/actions/workflows/run-tests.yml?query=branch%3Amaster+event%3Apush)
