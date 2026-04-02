@@ -2,9 +2,11 @@
 
 ### Modifications to QGIS for building R2DTool and OpenSRA .. builds QGIS utilizing user Qt install and not vcpkg
 
-Changes to Default: vcpgk.json modified to remove Qt dependencies
-                    makeMacDeps, makeWinDeps scripts to build other Qt related packages needed, and some others!
-                    makeMac, MakeWin scripts to build QGIS
+Changes to Default Repo: 
+-vcpgk.json modified to remove Qt dependencies
+-makeMacDeps, makeWinDeps scripts added to build other Qt related packages needed, and some others!
+-makeMac, MakeWin scripts added to build QGIS
+-two classes modified so visible to classes in R2D and OpenSRA
 
 #### Install Requiremnents
 1. Requires Qt6.10 (presently testing on Mac and Windows 11 using Qt6.10.2)
@@ -21,17 +23,18 @@ Changes to Default: vcpgk.json modified to remove Qt dependencies
    
    packages: python -m pip install packaging, setuptools, sip, tomli
 
-### Build QGIS
+#### Build QGIS
 1. run the makeDeps script suitable for OS
-2. presently this fails, github has seeming changed sha of a compressed folder downloaded and the json for this needs to be updated!!
-3. runb makeDeps again!
-4. run make script suitiable for OS with the python version and packages available if you have created a python_env
-5. if sucseefull the build/output folder contains qgis
+2. This can fail!! .. typically a SHA512 hash mismatch .. try git pull, vcpcg update if older vcpkg, else:
+   - Find the file: Look for ports/[package-name]/portfile.cmake.
+   - Locate the SHA512: Find the SHA512 string in that file.
+   - Replace it: Copy the "Actual Hash" from your error message and paste it over the "Expected Hash" in the file.
+4. run makeDeps again after you change the json!
+5. run make script suitiable for OS with the python version and packages available if you have created a python_env
+6. if sucseefull the build/output folder contains qgis
 
 ## The following is the Original QGIS README.md
    
-
-
 
 
 <img src="images/README-md/main_logo.png" width="300">
